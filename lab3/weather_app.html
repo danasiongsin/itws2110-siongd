@@ -38,28 +38,28 @@
       </div>
    </div>
    
-      <script>
-         const apiKey = "5d6b9aa39f060984cd6ce83a5e840626";
-         const lat = 42.7284;
-         const lon = -73.6918;
+   <script>
+      const apiKey = "5d6b9aa39f060984cd6ce83a5e840626";
+      const lat = 42.7284;
+      const lon = -73.6918;
 
-         const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+      const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
-         $.getJSON(weather_url).done(function(data) {
-            // document.getElementById("location").textContent = `${data.name}, ${data.sys.country}`;
-            document.getElementById("temp").textContent = `${Math.round((data.main.temp*1.8) + 32)}°F`;
-            document.getElementById("desc").textContent = `Conditions: ${data.weather[0].description}`;
-            document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
-            });
-
-         const sun_url = `https://api.sunrise-sunset.org/json?lat=42.728413&lng=-73.691788&date=today&tzid=US/Eastern`;
-         $.getJSON(sun_url).done(function(data) {
-            document.getElementById("sunrise").textContent = `Sunrise time: ${data.results.sunrise}`;
-            document.getElementById("sunset").textContent = `Sunset time: ${data.results.sunset}`;
-            document.getElementById("solarnoon").textContent = `Solar noon: ${data.results.solar_noon}`;
-            document.getElementById("daylength").textContent = `Day length: ${data.results.day_length} hours`;
+      $.getJSON(weather_url).done(function(data) {
+         // document.getElementById("location").textContent = `${data.name}, ${data.sys.country}`;
+         document.getElementById("temp").textContent = `${Math.round((data.main.temp*1.8) + 32)}°F`;
+         document.getElementById("desc").textContent = `Conditions: ${data.weather[0].description}`;
+         document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
          });
-      </script>
-      <p class="source">Data is from: https://sunrise-sunset.org and https://api.openweathermap.org</p>
+
+      const sun_url = `https://api.sunrise-sunset.org/json?lat=42.728413&lng=-73.691788&date=today&tzid=US/Eastern`;
+      $.getJSON(sun_url).done(function(data) {
+         document.getElementById("sunrise").textContent = `Sunrise time: ${data.results.sunrise}`;
+         document.getElementById("sunset").textContent = `Sunset time: ${data.results.sunset}`;
+         document.getElementById("solarnoon").textContent = `Solar noon: ${data.results.solar_noon}`;
+         document.getElementById("daylength").textContent = `Day length: ${data.results.day_length} hours`;
+      });
+   </script>
+   <p class="source">Data is from: https://sunrise-sunset.org and https://api.openweathermap.org</p>
 </body>
 </html>
