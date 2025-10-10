@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Weather and Sun</title>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="stylesheet" href="styles.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <header>
+      <h1>Weather and Sun Data</h1>
+      <h2>for Troy, NY</h2>
+   </header>
+   <div class="widget-container">
+      <div class="weather_widget">
+         <h1>Current Weather</h1>
+         <h2 id="temp"></h2>
+         <p id="desc"></p>
+         <p id="humidity"></p>
+      </div>
+      <div class="weather_widget">
+         <h1>Sunrise/Sunset Info</h1>
+         <p id="sunrise"></p>
+         <p id="sunset"></p>
+         <div class="moreinfo">
+            <p id="solarnoon"></p>
+            <div class="tooltip">
+               <img src="./help.png" alt="Help icon"/>
+               <span class="tooltiptext">Solar noon is the moment when the Sun passes a location's meridian and reaches its highest position in the sky.</span>
+            </div>
+         </div>
+         <p id="daylength"></p>
+         <img src="./sun-icon.png" class="icon" alt="Sun image"/>
+      </div>
+   </div>
+   
+      <script>
+         const apiKey = "5d6b9aa39f060984cd6ce83a5e840626";
+         const lat = 42.7284;
+         const lon = -73.6918;
+
+         const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+         $.getJSON(weather_url).done(function(data) {
+            // document.getElementById("location").textContent = `${data.name}, ${data.sys.country}`;
+            document.getElementById("temp").textContent = `${Math.round((data.main.temp*1.8) + 32)}°F`;
+            document.getElementById("desc").textContent = `Conditions: ${data.weather[0].description}`;
+            document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
+            });
+
+         const sun_url = `https://api.sunrise-sunset.org/json?lat=42.728413&lng=-73.691788&date=today&tzid=US/Eastern`;
+         $.getJSON(sun_url).done(function(data) {
+            document.getElementById("sunrise").textContent = `Sunrise time: ${data.results.sunrise}`;
+            document.getElementById("sunset").textContent = `Sunset time: ${data.results.sunset}`;
+            document.getElementById("solarnoon").textContent = `Solar noon: ${data.results.solar_noon}`;
+            document.getElementById("daylength").textContent = `Day length: ${data.results.day_length} hours`;
+         });
+      </script>
+      <p class="source">Data is from: https://sunrise-sunset.org and https://api.openweathermap.org</p>
+</body>
+</html>
