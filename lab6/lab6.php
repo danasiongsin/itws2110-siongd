@@ -94,11 +94,13 @@ class Division extends Operation {
     }
 // Put the code for Part 2 here  \/
 
-    elseif (isset($_POST['sub']) && $_POST['sub'] == 'Subtract') {
+    if (isset($_POST['sub']) && $_POST['sub'] == 'Subtract') {
       $op = new Subtraction($o1, $o2);
-    } elseif (isset($_POST['mult']) && $_POST['mult'] == 'Multiply') {
+    } 
+    if (isset($_POST['mult']) && $_POST['mult'] == 'Multiply') {
       $op = new Multiplication($o1, $o2);
-    } elseif (isset($_POST['div']) && $_POST['div'] == 'Divide') {
+    }
+    if (isset($_POST['div']) && $_POST['div'] == 'Divide') {
       $op = new Division($o1, $o2);
     }
 
