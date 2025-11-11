@@ -94,9 +94,7 @@ class Division extends Operation {
     }
 // Put the code for Part 2 here  \/
 
-    if (isset($_POST['add']) && $_POST['add'] == 'Add') {
-      $op = new Addition($o1, $o2);
-    } elseif (isset($_POST['sub']) && $_POST['sub'] == 'Subtract') {
+    elseif (isset($_POST['sub']) && $_POST['sub'] == 'Subtract') {
       $op = new Subtraction($o1, $o2);
     } elseif (isset($_POST['mult']) && $_POST['mult'] == 'Multiply') {
       $op = new Multiplication($o1, $o2);
@@ -136,7 +134,7 @@ class Division extends Operation {
     } 
   ?>
   </pre>
-  <form method="post" action="lab6start.php">
+  <form method="post" action="lab6.php">
     <input type="text" name="op1" id="name" value="" />
     <input type="text" name="op2" id="name" value="" />
     <br/>
