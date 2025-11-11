@@ -103,9 +103,6 @@ class Division extends Operation {
     if (isset($_POST['div']) && $_POST['div'] == 'Divide') {
       $op = new Division($o1, $o2);
     }
-
-
-
 // End of Part 2   /\
 
   }
