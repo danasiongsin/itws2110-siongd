@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$dbname = "ITWS2110‐Fall2025‐siongd‐Quiz2";
+$dbname = "ITWS2110-Fall2025-siongd-Quiz2";
 $username = "phpmyadmin";
 $password = "NewPMApassword123!";
 $dbOK = false;
@@ -12,5 +12,3 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
-
-
