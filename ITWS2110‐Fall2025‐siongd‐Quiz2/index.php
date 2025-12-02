@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['userId'])) {
     header("Location: login.php");
     exit();
 }
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Dashboard</title>
 </head>
 <body>
-<h2>Welcome, <?php echo $_SESSION['user_id']; ?>!</h2>
+<h2>Welcome, <?php echo $_SESSION['userId']; ?>!</h2>
 
 <h3>Options:</h3>
 <ul>
