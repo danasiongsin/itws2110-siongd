@@ -1,0 +1,36 @@
+CREATE TABLE `users` ( 
+   `userId` int(11),
+   `firstName` varchar(255) not null,
+   `lastName` varchar(255) not null,
+   `nickName` varchar(255) not null,
+   `password_hash` VARCHAR(255) NOT NULL,
+   PRIMARY KEY (`userId`)
+);
+
+CREATE TABLE `projects` ( 
+   `projectId` int(11),
+   `name` varchar(255) not null,
+   `description` varchar(255) not null,
+   PRIMARY KEY (`projectId`)
+);
+
+CREATE TABLE `projectMembership` ( 
+   `projectId` int(11),
+   `memberId` varchar(255) not null,
+   FOREIGN KEY (`projectId`) REFERENCES courses(crn),
+   FOREIGN KEY (`memberId`) REFERENCES users(userId)
+);
+
+INSERT INTO courses
+VALUES (1, 'Dana', 'Siong Sin', 'Dana', 'dana123'),
+   (2, 'Elizabeth', 'Lottinger', 'Lizzie', 'lizzie123'),
+   (3, 'Melany', 'Suditu', 'Mel', 'mel123'),
+   (4, 'Ritika', 'Brahmadesam', 'Tika', 'tika123'),
+(5, 'Aysenur', 'Pamucku', 'Aysenur', 'aysenur123'),
+(6, 'Hazel', 'Yu', 'Hazel', 'hazel123'),
+(7, 'Grace', 'Fong', 'Grace', 'grace123'),
+(8, 'Karly', 'Chan', 'Karly', 'karly123'),
+(9, 'Allison', 'Gorelik', 'Allison', 'allison123'),
+(10, 'Karlina', 'Jiminez', 'Lina', 'lina123'),
+(11, 'Hannah', 'Leung', 'Hannah', 'hannah123'),
+(12, 'Viane', 'Matz', 'Viane', 'viane123');
