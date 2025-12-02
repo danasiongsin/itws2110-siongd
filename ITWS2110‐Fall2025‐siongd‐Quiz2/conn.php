@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $db   = 'ITWS2110‐Fall2025‐siongd‐Quiz2';
-$user = 'phpmyadmin';
-$pass = 'NewPMApassword123';
+$user = 'root';
+$pass = '';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 
