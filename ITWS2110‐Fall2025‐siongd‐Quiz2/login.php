@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Incorrect password. Please try again.";
         }
     } else {
-        header("Location: register.php");
-        exit();
+        $error = "User not found. Please register.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -42,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" name="password" required><br><br>
     <button type="submit">Login</button>
 </form>
+<p>No account? <a href="register.php">Register here</a></p>
+
 <p style="color:red;"><?php echo $error; ?></p>
 </body>
 </html>
