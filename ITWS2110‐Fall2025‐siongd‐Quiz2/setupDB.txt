@@ -23,7 +23,7 @@ CREATE TABLE `projectMembership` (
 
 INSERT INTO courses
 VALUES (1, 'Dana', 'Siong Sin', 'Dana', 'dana123'),
-   (2, 'Elizabeth', 'Lottinger', 'Lizzie', 'lizzie123'),
+   (2, 'Elizabeth', 'Lottinger', 'Lizzie', 'lizzi123'),
    (3, 'Melany', 'Suditu', 'Mel', 'mel123'),
    (4, 'Ritika', 'Brahmadesam', 'Tika', 'tika123'),
 (5, 'Aysenur', 'Pamucku', 'Aysenur', 'aysenur123'),
