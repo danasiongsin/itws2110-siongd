@@ -1,12 +1,15 @@
 <?php
-$dbOK = false;
+$host = 'localhost';
+$db   = 'ITWS2110‐Fall2025‐siongd‐Quiz2';
+$user = 'phpmyadmin';
+$pass = 'NewPMApassword123';
 
-@$db = new mysqli('localhost', 'phpmyadmin', 'NewPMApassword123!', 'ITWS2110‐Fall2025‐siongd‐Quiz2');
+$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 
-if ($db->connect_error) {
-   echo '<div class="messages">Could not connect to the database. Error: ';
-   echo $db->connect_errno . ' - ' . $db->connect_error . '</div>';
-} else {
-   $dbOk = true;
+try {
+    $pdo = new PDO($dsn, $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
 }
 ?>
