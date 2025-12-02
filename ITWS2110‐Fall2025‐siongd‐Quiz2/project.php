@@ -10,6 +10,7 @@ if (!isset($_SESSION['userId'])) {
 require_once "conn.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   $projectId = $_POST['projectId'] ?? '';
    $name = $_POST['name'] ?? '';
    $description = $_POST['description'] ?? '';
    $members = $_POST['members'] ?? [];
@@ -18,16 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    if ($name && $description) {
       $stmt = $pdo->prepare("INSERT INTO projects (projectId, name, description) VALUES (?, ?)");
       $stmt->execute([$projectId, $name, $description]);
-      // use provided projectId instead of lastInsertId
-      // $projectId = $pdo->lastInsertId();
 
-   if (!empty($members)) {
-      $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?)");
-      foreach ($members as $memberId) {
-         $stmt->execute([$projectId, $memberId]);
+      if (!empty($members)) {
+         $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?)");
+         foreach ($members as $memberId) {
+            $stmt->execute([$projectId, $memberId]);
+         }
       }
-   }
-   echo "<p>Project added successfully!</p>";
+      echo "<p>Project added successfully!</p>";
    } 
    else {
       echo "<p style='color:red;'>Please fill in all required fields.</p>";
