@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db   = 'ITWS2110‐Fall2025‐siongd‐Quiz2';
 $user = 'root';
-$pass = '';
+$pass = 'root';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 
