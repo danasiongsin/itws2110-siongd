@@ -12,11 +12,11 @@ if (!isset($_SESSION['userId'])) {
     <title>Dashboard</title>
 </head>
 <body>
-<h2>Welcome, <?php echo $_SESSION['userId']; ?>!</h2>
+<h2>Project Information Website</h2>
 
 <h3>Options:</h3>
 <ul>
-    <li><a href="add_project.php">Add a project</a></li>
+    <li><a href="project.php">Add a project</a></li>
     <li><a href="view_projects.php">View existing projects</a></li>
 </ul>
 
