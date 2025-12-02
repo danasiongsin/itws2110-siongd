@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" name="nickName" required><br><br>
     <label>Password:</label>
     <input type="password" name="password" required><br><br>
-    <button type="submit">Login</button>
+    <button type="submit">Register</button>
 </form>
 <p style="color:red;"><?php echo isset($error) ? $error : ''; ?></p>
 </body>

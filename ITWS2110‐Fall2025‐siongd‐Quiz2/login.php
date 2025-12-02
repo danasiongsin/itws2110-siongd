@@ -6,9 +6,6 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_POST['userId'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $nickName = $_POST['nickName'];
     $password = $_POST['password'];
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE userId = ?");
