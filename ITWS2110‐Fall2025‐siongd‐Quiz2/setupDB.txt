@@ -16,8 +16,8 @@ CREATE TABLE `projects` (
 
 CREATE TABLE `projectMembership` ( 
    `projectId` int(11),
-   `memberId` varchar(255) not null,
-   FOREIGN KEY (`projectId`) REFERENCES courses(crn),
+   `memberId` int(11) not null,
+   FOREIGN KEY (`projectId`) REFERENCES projects(projectId),
    FOREIGN KEY (`memberId`) REFERENCES users(userId)
 );
 

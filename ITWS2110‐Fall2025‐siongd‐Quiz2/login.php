@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE userId = ?");
-    $stmt->execute([$user_id]);
+    $stmt->execute([$userId]);
+    
     $user = $stmt->fetch();
 
     if ($user) {
@@ -38,14 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <h2>Login</h2>
 <form method="POST">
-    <label>User ID:</label>
+    <label>User ID (number):</label>
     <input type="text" name="userId" required><br><br>
-    <label>First Name:</label>
-    <input type="text" name="firstName" required><br><br>
-    <label>Last Name:</label>
-    <input type="text" name="lastName" required><br><br>
-    <label>Nickname:</label>
-    <input type="text" name="nickName" required><br><br>
     <label>Password:</label>
     <input type="password" name="password" required><br><br>
     <button type="submit">Login</button>
