@@ -20,17 +20,3 @@ CREATE TABLE `projectMembership` (
    FOREIGN KEY (`projectId`) REFERENCES projects(projectId),
    FOREIGN KEY (`memberId`) REFERENCES users(userId)
 );
-
-INSERT INTO courses
-VALUES (1, 'Dana', 'Siong Sin', 'Dana', 'dana123'),
-   (2, 'Elizabeth', 'Lottinger', 'Lizzie', 'lizzi123'),
-   (3, 'Melany', 'Suditu', 'Mel', 'mel123'),
-   (4, 'Ritika', 'Brahmadesam', 'Tika', 'tika123'),
-(5, 'Aysenur', 'Pamucku', 'Aysenur', 'aysenur123'),
-(6, 'Hazel', 'Yu', 'Hazel', 'hazel123'),
-(7, 'Grace', 'Fong', 'Grace', 'grace123'),
-(8, 'Karly', 'Chan', 'Karly', 'karly123'),
-(9, 'Allison', 'Gorelik', 'Allison', 'allison123'),
-(10, 'Karlina', 'Jiminez', 'Lina', 'lina123'),
-(11, 'Hannah', 'Leung', 'Hannah', 'hannah123'),
-(12, 'Viane', 'Matz', 'Viane', 'viane123');

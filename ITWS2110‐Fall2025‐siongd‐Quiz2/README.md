@@ -2,6 +2,7 @@ Dana Siong Sin
 ITWS-2110 Quiz 2
 README
 *I was unable to make a new Azure VM because I have reached the max.
+*setupDB.sql is the direct export from phpmyadmin of my database and all existing rows. setupDB.txt contains the queries I used to create the 3 tables.
 
 3.1. Any design decisions that you took in completing this quiz.
 I kept the design of my website very simple. I used a basic font from Google Fonts: https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap
