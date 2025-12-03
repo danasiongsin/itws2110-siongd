@@ -37,7 +37,8 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+   <title>Dashboard</title>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h2>Project Information Website</h2>
@@ -46,24 +47,24 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 <h2>Existing Projects</h2>
 
 <?php if (empty($projects)): ?>
-    <p>No projects found.</p>
+   <p>No projects found.</p>
 <?php else: ?>
-    <?php foreach ($projects as $pid => $p): ?>
-        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-            <h3>
-                Project ID: <?= htmlspecialchars($pid) ?>:
-                <?= htmlspecialchars($p['name']) ?>
-            </h3>
-            <p><strong>Description:</strong> <?= htmlspecialchars($p['description']) ?></p>
-            
-            <p><strong>Members:</strong></p>
-            <ul>
-                <?php foreach ($p['members'] as $m): ?>
-                    <li><?= htmlspecialchars($m) ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endforeach; ?>
+   <?php foreach ($projects as $pid => $p): ?>
+      <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+         <h3>
+               Project ID: <?= htmlspecialchars($pid) ?>:
+               <?= htmlspecialchars($p['name']) ?>
+         </h3>
+         <p><strong>Description:</strong> <?= htmlspecialchars($p['description']) ?></p>
+         
+         <p><strong>Members:</strong></p>
+         <ul>
+               <?php foreach ($p['members'] as $m): ?>
+                  <li><?= htmlspecialchars($m) ?></li>
+               <?php endforeach; ?>
+         </ul>
+      </div>
+   <?php endforeach; ?>
 <?php endif; ?>
 
 <a href="logout.php">Logout</a>

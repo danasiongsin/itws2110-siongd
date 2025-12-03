@@ -47,6 +47,7 @@ $users = $pdo->query("SELECT userId, firstName, lastName, nickName FROM users OR
 <html>
 <head>
    <title>Add Project</title>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
    <h2>Add New Project</h2>
