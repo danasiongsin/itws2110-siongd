@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
    if ($name && $description) {
-      $stmt = $pdo->prepare("INSERT INTO projects (projectId, name, description) VALUES (?, ?)");
+      $stmt = $pdo->prepare("INSERT INTO projects (projectId, name, description) VALUES (?, ?, ?)");
       $stmt->execute([$projectId, $name, $description]);
 
       if (!empty($members)) {
-         $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?)");
+         $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?, ?)");
          foreach ($members as $memberId) {
             $stmt->execute([$projectId, $memberId]);
          }
@@ -43,7 +43,7 @@ $users = $pdo->query("SELECT userId, firstName, lastName, nickName FROM users OR
 <body>
    <h2>Add New Project</h2>
    <form method="post">
-      <label>Project ID:</label><br>
+      <label>Project ID (number):</label><br>
       <input type="number" name="projectId" required><br><br>
       <label>Project Name:</label><br>
       <input type="text" name="name" required><br><br>
