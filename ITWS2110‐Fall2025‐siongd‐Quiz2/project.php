@@ -22,10 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $checkStmt->execute([$name]);
    $count = $checkStmt->fetchColumn();
 
-   if ($count > 0) {
+   if (count($members) !== 3) {
+      $error = "Error: Each project must have exactly 3 members.";
+   }
+   else if ($count > 0) {
       $error = "Error: A project with that name already exists. Please choose a different name.";
    }
-    else {
+   else {
       $stmt = $pdo->prepare("INSERT INTO projects (projectId, name, description) VALUES (?, ?, ?)");
       $stmt->execute([$projectId, $name, $description]);
       if (!empty($members)) {
@@ -53,7 +56,7 @@ $users = $pdo->query("SELECT userId, firstName, lastName, nickName FROM users OR
    <?php if (!empty($success)): ?>
       <p style="color:green;"><?= htmlspecialchars($success) ?></p>
    <?php endif; ?>
-   
+
    <form method="post">
       <label>Project ID (number):</label><br>
       <input type="number" name="projectId" required><br><br>
