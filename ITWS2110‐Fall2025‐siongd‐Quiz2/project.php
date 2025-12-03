@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $checkStmt->execute([$name]);
    $count = $checkStmt->fetchColumn();
 
-   if (count($members) !== 3) {
-      $error = "Error: Each project must have exactly 3 members.";
+   if (count($members) < 3) {
+      $error = "Error: Each project must have at least 3 members.";
    }
    else if ($count > 0) {
       $error = "Error: A project with that name already exists. Please choose a different name.";

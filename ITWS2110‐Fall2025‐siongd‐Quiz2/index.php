@@ -51,7 +51,7 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     <?php foreach ($projects as $pid => $p): ?>
         <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
             <h3>
-                Project ID: <?= htmlspecialchars($pid) ?> —
+                Project ID: <?= htmlspecialchars($pid) ?>:
                 <?= htmlspecialchars($p['name']) ?>
             </h3>
             <p><strong>Description:</strong> <?= htmlspecialchars($p['description']) ?></p>
