@@ -9,28 +9,33 @@ if (!isset($_SESSION['userId'])) {
 }
 require_once "conn.php";
 
+$error = '';
+$success = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $projectId = $_POST['projectId'] ?? '';
    $name = $_POST['name'] ?? '';
    $description = $_POST['description'] ?? '';
    $members = $_POST['members'] ?? [];
 
+   $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM projects WHERE name = ?");
+   $checkStmt->execute([$name]);
+   $count = $checkStmt->fetchColumn();
 
-   if ($name && $description) {
+   if ($count > 0) {
+      $error = "Error: A project with that name already exists. Please choose a different name.";
+   }
+    else {
       $stmt = $pdo->prepare("INSERT INTO projects (projectId, name, description) VALUES (?, ?, ?)");
       $stmt->execute([$projectId, $name, $description]);
-
       if (!empty($members)) {
          $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?)");
          foreach ($members as $memberId) {
             $stmt->execute([$projectId, $memberId]);
          }
       }
-      echo "<p>Project added successfully!</p>";
+      $success = "Project successfully added.";
    } 
-   else {
-      echo "<p style='color:red;'>Please fill in all required fields.</p>";
-   }
 }
 $users = $pdo->query("SELECT userId, firstName, lastName, nickName FROM users ORDER BY firstName")->fetchAll();
 ?>
@@ -42,6 +47,13 @@ $users = $pdo->query("SELECT userId, firstName, lastName, nickName FROM users OR
 </head>
 <body>
    <h2>Add New Project</h2>
+   <?php if (!empty($error)): ?>
+      <p style="color:red;"><?= htmlspecialchars($error) ?></p>
+   <?php endif; ?>
+   <?php if (!empty($success)): ?>
+      <p style="color:green;"><?= htmlspecialchars($success) ?></p>
+   <?php endif; ?>
+   
    <form method="post">
       <label>Project ID (number):</label><br>
       <input type="number" name="projectId" required><br><br>
