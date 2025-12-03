@@ -38,7 +38,7 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 <html>
 <head>
    <title>Dashboard</title>
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <h2>Project Information Website</h2>
