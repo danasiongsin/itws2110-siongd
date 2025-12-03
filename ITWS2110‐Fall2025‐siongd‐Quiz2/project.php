@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stmt->execute([$projectId, $name, $description]);
 
       if (!empty($members)) {
-         $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?, ?)");
+         $stmt = $pdo->prepare("INSERT INTO projectMembership (projectId, memberId) VALUES (?, ?)");
          foreach ($members as $memberId) {
             $stmt->execute([$projectId, $memberId]);
          }
