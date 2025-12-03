@@ -5,6 +5,8 @@ if (!isset($_SESSION['userId'])) {
     exit();
 }
 
+require_once "conn.php";
+
 $query = $pdo->query("
     SELECT p.projectId, p.name, p.description,
            u.firstName, u.lastName, u.nickName
